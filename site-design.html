@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rizal Center of Chicago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F6EF;
+    --card:#FFFFFF;
+    --ink:#1F2A24;
+    --ink-soft:#55625A;
+    --green:#2F5D50;
+    --green-dark:#1E3E35;
+    --gold:#C98A2C;
+    --gold-light:#F3E4C8;
+    --shell:#4A6FA5;
+    --shell-light:#E5EBF4;
+    --line:rgba(31,42,36,0.12);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;margin:0;color:var(--green-dark);}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .scallop{height:10px;background-image:radial-gradient(circle at 10px 0, transparent 9px, var(--bg) 10px);background-size:20px 10px;background-repeat:repeat-x;}
+  .scallop.on-green{background-image:radial-gradient(circle at 10px 0, transparent 9px, var(--green) 10px);}
+
+  header{background:var(--green);color:#fff;}
+  .nav-wrap{max-width:1080px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#fff;display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:30px;height:30px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--green-dark);font-weight:600;font-size:14px;}
+  nav.links{display:flex;gap:28px;font-size:14px;}
+  nav.links a{text-decoration:none;opacity:.9;}
+  nav.links a:hover{opacity:1;text-decoration:underline;}
+  .menu-btn{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1;padding:4px;}
+  .mobile-menu{display:none;flex-direction:column;gap:2px;background:var(--green-dark);padding:0 24px;}
+  .mobile-menu.open{display:flex;padding:10px 24px 16px;}
+  .mobile-menu a{color:#fff;text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.12);font-size:15px;}
+
+  .hero{position:relative;width:100%;height:320px;overflow:hidden;background:var(--green-dark);}
+  .hero img{width:100%;height:100%;object-fit:cover;opacity:.85;}
+  .hero-overlay{
+    position:absolute;left:0;right:0;bottom:0;
+    background:linear-gradient(to top, rgba(15,25,20,0.85), rgba(15,25,20,0.1));
+    color:#fff;padding:20px 24px 22px;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  }
+  .hero-overlay .eyebrow{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-light);}
+  .hero-overlay h2{color:#fff;font-size:22px;margin:6px 0 4px;}
+  .hero-overlay p{margin:0;font-size:13.5px;color:rgba(255,255,255,0.85);}
+
+  .btn{border:none;border-radius:999px;padding:10px 20px;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;cursor:pointer;white-space:nowrap;}
+  .btn-primary{background:var(--gold);color:var(--green-dark);}
+  .btn-primary:hover{background:#B87A20;}
+  .btn-outline{background:transparent;border:1.5px solid var(--line);color:var(--ink);width:100%;}
+  .btn-outline:hover{border-color:var(--green);color:var(--green-dark);}
+
+  .page{max-width:1080px;margin:0 auto;padding:28px 24px 60px;}
+
+  .filters{display:flex;gap:8px;margin-bottom:24px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;}
+  .filters::-webkit-scrollbar{display:none;}
+  .chip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:7px 16px;font-size:13.5px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--ink-soft);flex:0 0 auto;}
+  .chip.active{background:var(--green);border-color:var(--green);color:#fff;}
+
+  .layout{display:grid;grid-template-columns:2fr 1fr;gap:28px;align-items:start;}
+  .feed{grid-column:1;}
+  .sidebar{grid-column:2;}
+
+  .feed > h3{font-size:15px;margin-bottom:12px;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:border-color .15s;}
+  .card:hover{border-color:var(--green);}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;}
+  .badge.event{background:var(--shell-light);color:var(--shell);}
+  .badge.story{background:var(--gold-light);color:#8A5C15;}
+  .badge.announcement{background:#EAF0E9;color:var(--green);}
+  .card p.title{font-weight:600;font-size:15px;margin:10px 0 3px;font-family:'Inter',sans-serif;color:var(--ink);}
+  .card p.meta{font-size:13px;color:var(--ink-soft);margin:0;}
+
+  .util-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-bottom:20px;}
+  .util-card h4{font-size:15px;margin-bottom:10px;}
+  .util-card .row{font-size:13.5px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .util-card .row:last-child{border-bottom:none;padding-bottom:0;}
+  .util-card .row:first-child{padding-top:0;}
+  .util-card p.desc{font-size:13px;color:var(--ink-soft);margin:0 0 10px;}
+  input[type=email]{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-family:'Inter',sans-serif;font-size:13.5px;margin-bottom:8px;}
+
+  footer{background:var(--green-dark);color:rgba(255,255,255,0.75);font-size:13px;text-align:center;padding:24px;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-btn{display:block;}
+    .hero{height:220px;}
+    .hero-overlay{flex-direction:column;align-items:flex-start;}
+    .hero-overlay .btn{width:100%;margin-top:4px;}
+
+    .layout{display:block;}
+    .sidebar{
+      display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    }
+    .sidebar::-webkit-scrollbar{display:none;}
+    .util-card{flex:0 0 250px;margin-bottom:0;scroll-snap-align:start;}
+    .feed{order:2;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo"><span class="logo-mark">R</span> Rizal Center</div>
+    <nav class="links">
+      <a href="#">Home</a>
+      <a href="#">Events</a>
+      <a href="#">Stories</a>
+      <a href="#">About</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">&#9776;</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">Events</a>
+    <a href="#">Stories</a>
+    <a href="#">About</a>
+  </div>
+</header>
+
+<div class="hero">
+  <img src="https://picsum.photos/id/1015/1200/500" alt="Community members gathered at a Rizal Center event">
+  <div class="hero-overlay">
+    <div>
+      <div class="eyebrow">Pinned</div>
+      <h2>Kultura night — annual cultural showcase</h2>
+      <p>Saturday, Nov 15 &middot; Main hall &middot; 214 going</p>
+    </div>
+    <button class="btn btn-primary">RSVP now</button>
+  </div>
+</div>
+<div class="scallop on-green"></div>
+
+<div class="page">
+
+  <div class="filters" id="filters">
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-filter="event">Events</button>
+    <button class="chip" data-filter="story">Stories</button>
+    <button class="chip" data-filter="announcement">Announcements</button>
+  </div>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+      <div class="util-card">
+        <h4>Announcements</h4>
+        <div class="row">Volunteer sign-up deadline is Dec 5</div>
+        <div class="row">Parking lot resurfacing this week</div>
+        <div class="row">New member orientation added</div>
+      </div>
+
+      <div class="util-card">
+        <h4>Resources</h4>
+        <div class="row">Room rental request</div>
+        <div class="row">Membership application</div>
+        <div class="row">Past newsletters</div>
+      </div>
+
+      <div class="util-card">
+        <h4>Stay in the loop</h4>
+        <p class="desc">Monthly highlights, straight to your inbox.</p>
+        <input type="email" placeholder="name@email.com">
+        <button class="btn btn-primary" style="width:100%;">Subscribe</button>
+      </div>
+    </aside>
+
+    <div class="feed" id="feed">
+      <h3>Community pulse</h3>
+
+      <div class="card" data-type="story">
+        <span class="badge story">Story</span>
+        <p class="title">The adobo recipe that's been passed down four generations</p>
+        <p class="meta">Posted 2 days ago &middot; Lola Nena's family</p>
+      </div>
+
+      <div class="card" data-type="event">
+        <span class="badge event">Event</span>
+        <p class="title">Tagalog conversation circle — every Thursday</p>
+        <p class="meta">This week &middot; 6:30 PM &middot; 18 attending</p>
+      </div>
+
+      <div class="card" data-type="announcement">
+        <span class="badge announcement">Announcement</span>
+        <p class="title">Center closed Nov 28 for Thanksgiving</p>
+        <p class="meta">Posted 3 days ago</p>
+      </div>
+
+      <div class="card" data-type="story">
+        <span class="badge story">Story</span>
+        <p class="title">Volunteers packed 300 relief kits this weekend</p>
+        <p class="meta">Posted 5 days ago</p>
+      </div>
+
+      <div class="card" data-type="event">
+        <span class="badge event">Event</span>
+        <p class="title">Sunday folk dance rehearsal — Tinikling group</p>
+        <p class="meta">Nov 2 &middot; 10:00 AM &middot; 12 attending</p>
+      </div>
+
+      <div class="card" data-type="announcement">
+        <span class="badge announcement">Announcement</span>
+        <p class="title">New member orientation added for December</p>
+        <p class="meta">Posted 6 days ago</p>
+      </div>
+
+      <button class="btn btn-outline">Load more</button>
+    </div>
+
+  </div>
+</div>
+
+<footer>Rizal Center of Chicago &middot; a Filipino community nonprofit</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.card');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.type === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
