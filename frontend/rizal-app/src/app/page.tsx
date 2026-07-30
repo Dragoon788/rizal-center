@@ -14,7 +14,7 @@ export default function Home() {
 						.
 					</li>
 					<li className="tracking-[-.01em]">Save and see your changes instantly.</li>
-					<li>Hi there!</li>
+					<li>Hi there! I'm making an update here!!</li>
 				</ol>
 
 				<div className="flex gap-4 items-center flex-col sm:flex-row">
