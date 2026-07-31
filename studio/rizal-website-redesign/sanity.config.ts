@@ -4,15 +4,15 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
-  name: 'default',
-  title: 'Rizal Website Redesign',
+    name: 'default',
+    title: 'Rizal Website Redesign',
 
-  projectId: 'h5zeeair',
-  dataset: 'production',
+    projectId: 'h5zeeair',
+    dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+    plugins: [structureTool(), visionTool()],
 
-  schema: {
-    types: schemaTypes,
-  },
+    schema: {
+      types: schemaTypes,
+    },
 })
