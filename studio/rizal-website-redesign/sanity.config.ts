@@ -4,6 +4,9 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 
+import {googleMapsInput} from '@sanity/google-maps-input'
+
+
 export default defineConfig({
     name: 'default',
     title: 'Rizal Website Redesign',
@@ -11,7 +14,14 @@ export default defineConfig({
     projectId: 'h5zeeair',
     dataset: 'production',
 
-    plugins: [structureTool({structure: structure}), visionTool()],
+    // Maybe fix apiKey later so that it is stored as a local variable
+    plugins: [structureTool({structure: structure}), 
+              visionTool(),
+              googleMapsInput({
+                apiKey: `AIzaSyDqyJBTfFfvN76tzmQ7VDLRib0ajnCn2rQ`,
+                defaultLocation: {lat: 41.954590, lng: -87.663531},
+                defaultZoom: 15,
+              })],
 
     schema: {
       types: schemaTypes,

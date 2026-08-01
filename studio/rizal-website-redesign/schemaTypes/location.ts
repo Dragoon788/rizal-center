@@ -12,18 +12,18 @@ export const location = defineType({
             placeholder: 'Ex: Rizal Center',
             validation: rule => rule.required().max(100)
         }),
-        defineField({
-            name: 'address',
-            type: 'string',
-            placeholder: 'Ex: 1332 W Irving Park Rd, Chicago, IL 60613',
-            validation: rule => rule.required().max(100)
-        }),
-        // Later define a custom webhook that autogenerates this 
+        // defineField({
+        //     name: 'address',
+        //     title: 'Street Address',
+        //     type: 'string',
+        //     placeholder: 'Ex: 1332 W Irving Park Rd, Chicago, IL 60613',
+        //     validation: rule => rule.required().max(100)
+        // }),
+
         defineField({
             name: 'geopoint',
+            title: 'Geo Location',
             type: 'geopoint',
-            readOnly: true,
-            hidden: true,
         }),
     ]
 })
