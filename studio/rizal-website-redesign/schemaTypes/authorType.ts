@@ -2,7 +2,7 @@
 import {UsersIcon} from '@sanity/icons/Users'
 import { defineField, defineType } from "sanity";
 
-export const authorType = defineType({
+export const author = defineType({
     name: "author",
     type: "document",
     icon: UsersIcon,
@@ -11,7 +11,7 @@ export const authorType = defineType({
         name: "name",
         type: "string",
         placeholder: "Ex: Francis Velasco",
-        validation: rule => rule.required()
+        validation: rule => rule.required(),
         }),
         defineField({
         name: "bio",
