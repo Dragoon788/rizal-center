@@ -1,10 +1,19 @@
 import {defineField, defineType} from 'sanity'
-import { resource } from '../resourceType'
 
 export const homePage = defineType({
     name: 'homePage',
     title: 'Home',
     type: 'document',
+
+
+    preview: {
+        prepare() {
+        return {
+            title: 'Home',
+        }
+        },
+    },
+
     fields: [
     defineField({
         name: 'hero',
@@ -28,7 +37,7 @@ export const homePage = defineType({
         name: 'resources',
         title: 'Resources',
         type: 'array',
-        of: [{type: 'resourceList'}],
+        of: [{type: 'reference', to: [{type: 'resourceList'}]}],
     }),    
     ]
 })

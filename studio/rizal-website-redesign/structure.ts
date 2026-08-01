@@ -1,9 +1,11 @@
 import type { StructureResolver } from "sanity/structure";
 
-// https://www.sanity.io/docs/structure-builder-cheat-sheet
+// Define documents we want to hide from user
+const hiddenTypes = ['homePage', 'resource', 'location']
+
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Base')
+    .title('Site Contents')
     .items([
       S.listItem()
         .title('Core Pages')
@@ -17,6 +19,6 @@ export const structure: StructureResolver = (S) =>
           ])
         ),
       ...S.documentTypeListItems().filter(
-        (item) => item.getId() != 'homePage'
+        (item) => !hiddenTypes.includes(item.getId()!)
       ),
     ]);

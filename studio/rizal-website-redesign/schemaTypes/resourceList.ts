@@ -23,7 +23,7 @@ export const resourceList = defineType({
         defineField({
         name: "resources",
         type: "array",
-        of: [{type: 'resource'}],
+        of: [{type: 'reference', to: [{type: 'resource'}]}],
         validation: rule => rule.required(),
         }),
     ],
