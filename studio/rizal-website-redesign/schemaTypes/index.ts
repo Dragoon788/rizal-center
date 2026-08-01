@@ -1,11 +1,13 @@
-import { author } from './authorType';
-import { homePage } from './corePages/homePage';
-import { resource } from './resourceType'
-import { resourceList } from './resourceList'
-import { location } from './location'
-// import SchemaTypeDefintion from "sanity";
+import { author } from './documents/author';
+import { homePage } from './singletons/homePage';
+import { resource, resourceList } from './documents/resource'
+import { location } from './documents/location'
 
 
 // export const schema: { types: SchemaTypeDefinition[] } = {
 //   types: [
-export const schemaTypes = [author, homePage, resource, resourceList, location]
+export const schemaTypes = [author, 
+                            homePage, 
+                            resource, 
+                            resourceList, 
+                            location]
