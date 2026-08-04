@@ -3,6 +3,10 @@ import {InfoOutlineIcon} from '@sanity/icons/InfoOutline'
 import {DocumentsIcon} from '@sanity/icons/Documents'
 import { defineField, defineType } from "sanity";
 
+// QUESTION:
+//// Is it better to build resourcelists or build resources with categories referencing their resourcelist
+//// Which is more intuitive?
+
 export const resource = defineType({
     name: "resource",
     type: "document",
@@ -59,6 +63,12 @@ export const resourceList = defineType({
             type: "array",
             of: [{type: 'reference', to: [{type: 'resource'}]}],
             validation: rule => rule.required(),
+        }),
+        defineField({
+            name: 'topic',
+            type: 'reference',
+            to: [{type: 'topic'}],
+            description: 'Try using an existing topic for a better user experience!'
         }),
     ],
 });

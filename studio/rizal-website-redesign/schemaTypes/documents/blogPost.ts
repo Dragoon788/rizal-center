@@ -20,10 +20,12 @@ export const blogPost = defineType({
                 slugify: input => input.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').slice(0,200),
             },
         }),
-        // defineField({
-        //     name: 'summary',
-        //     type: 'text',
-        // }),
+        defineField({
+            name: 'topic',
+            type: 'array',
+            of: [{type: 'reference', to: [{type: 'topic'}]}],
+            description: 'Try using an existing topic for a better user experience!'
+        }),
         defineField({
             name: 'body',
             type: 'array',

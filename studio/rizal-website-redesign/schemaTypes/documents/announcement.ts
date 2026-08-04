@@ -1,30 +1,27 @@
-import { ConfettiIcon } from '@sanity/icons/Confetti'
-import {defineType, defineField} from 'sanity'
+import {BellIcon} from '@sanity/icons/Bell';
+import {defineField, defineType} from 'sanity';
 
-export const event = defineType({
-    name: 'event',
+export const announcement = defineType({
+    name: 'announcement',
     type: 'document',
-    icon: ConfettiIcon,
+    icon: BellIcon,
     fields: [
         defineField({
             name: 'title',
             type: 'string',
-            validation: rule => rule.required().max(150)
-        }),
-        defineField({
-            name: 'slug',
-            type: 'slug',
-            options: {
-                source: 'title',
-                maxLength: 200,
-                slugify: input => input.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').slice(0,200),
-            },
-            validation: rule => rule.required()
+            placeholder: 'Ex: Holiday closure',
+            description: 'Write a short title for the announcement',
+            validation: rule => rule.required().max(100),
         }),
         defineField({
             name: 'description',
             type: 'array',
             of: [{type: 'block'}],
+        }),
+        defineField({
+            name: 'active',
+            title: 'Currently Active?',
+            type: 'boolean',
         }),
         defineField({
             name: 'startDate',
@@ -49,14 +46,5 @@ export const event = defineType({
             // initialValue: 'startDate',
             validation: rule => rule.min(rule.valueOfField('startDate')),
         }),
-        defineField({
-            name: 'location',
-            type: 'geopoint',
-        }),
-        defineField({
-            name: 'coverImage',
-            type: 'image',
-
-        }),
-    ]
+    ],
 })

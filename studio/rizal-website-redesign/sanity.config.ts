@@ -3,11 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
-
 import {googleMapsInput} from '@sanity/google-maps-input'
-
-console.log("hi")
-console.log(process.env.SANITY_STUDIO_GOOGLE_API_KEY)
 
 
 export default defineConfig({
