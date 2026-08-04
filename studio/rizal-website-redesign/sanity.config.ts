@@ -6,6 +6,9 @@ import {structure} from './structure'
 
 import {googleMapsInput} from '@sanity/google-maps-input'
 
+console.log("hi")
+console.log(process.env.SANITY_STUDIO_GOOGLE_API_KEY)
+
 
 export default defineConfig({
     name: 'default',
@@ -18,7 +21,7 @@ export default defineConfig({
     plugins: [structureTool({structure: structure}), 
               visionTool(),
               googleMapsInput({
-                apiKey: `AIzaSyDqyJBTfFfvN76tzmQ7VDLRib0ajnCn2rQ`,
+                apiKey: `${process.env.SANITY_STUDIO_GOOGLE_API_KEY}`,
                 defaultLocation: {lat: 41.954590, lng: -87.663531},
                 defaultZoom: 15,
               })],

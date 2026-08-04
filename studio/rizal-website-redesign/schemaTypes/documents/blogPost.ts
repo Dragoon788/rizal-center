@@ -20,13 +20,14 @@ export const blogPost = defineType({
                 slugify: input => input.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').slice(0,200),
             },
         }),
-        defineField({
-            name: 'summary',
-            type: 'text',
-        }),
+        // defineField({
+        //     name: 'summary',
+        //     type: 'text',
+        // }),
         defineField({
             name: 'body',
-            type: 'text',
+            type: 'array',
+            of: [{type: 'block'}],
             validation: rule => rule.required()
         }),
         defineField({
@@ -43,7 +44,8 @@ export const blogPost = defineType({
             type: 'date',
             options: {
                 dateFormat: 'MM-DD-YYYY',
-            }
+            },
+            initialValue: (new Date()).toISOString().split('T')[0],
         })
     ],
     

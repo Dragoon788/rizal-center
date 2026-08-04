@@ -3,6 +3,7 @@ import { homePage } from './singletons/homePage';
 import { resource, resourceList } from './documents/resource'
 import { location } from './documents/location'
 import { blogPost } from './documents/blogPost'
+import { event } from './documents/events'
 
 
 // export const schema: { types: SchemaTypeDefinition[] } = {
@@ -12,4 +13,5 @@ export const schemaTypes = [author,
                             resource, 
                             resourceList, 
                             location,
-                            blogPost]
+                            blogPost,
+                            event,]

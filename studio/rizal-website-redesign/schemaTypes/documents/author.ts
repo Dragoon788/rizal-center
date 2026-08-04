@@ -17,7 +17,6 @@ export const author = defineType({
             name: "bio",
             type: "text",
             placeholder: "Write a short description about yourself!",
-            validation: rule => rule.max(250),
         }),
         defineField({
             name: "profile_image",
