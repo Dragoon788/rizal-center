@@ -6,6 +6,7 @@ import { blogPost } from './documents/blogPost'
 import { event } from './documents/event'
 import { topic } from './documents/topic'
 import { announcement } from './documents/announcement';
+import { gallery } from './documents/gallery';
 
 
 // export const schema: { types: SchemaTypeDefinition[] } = {
@@ -18,4 +19,5 @@ export const schemaTypes = [author,
                             blogPost,
                             event,
                             topic,
-                            announcement,]
+                            announcement,
+                            ]
