@@ -15,7 +15,6 @@ export const gallery = defineType({
         }),
         defineField({
         name: 'photos',
-        title: 'Photos',
         type: 'array',
         of: [
             {
