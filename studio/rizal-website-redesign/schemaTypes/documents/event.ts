@@ -6,102 +6,137 @@ export const event = defineType({
     type: 'document',
     icon: ConfettiIcon,
     fieldsets: [
-        {name: 'schedule', title: 'Event Scheduling'},
-        {name: 'details', title: 'Event Details'},
+        // Open by default, logically groups the logistics
+        {name: 'logistics', title: 'When & Where', options: {collapsible: true}},
+        // Collapsed by default to hide scary technical fields
+        {name: 'advanced', title: 'Advanced & Admin', options: {collapsed: true}},
     ],
     fields: [
-        // BASIC INFO
+        // --- 1. THE "WHAT" (Top of the page, no fieldset) ---
         defineField({
             name: 'eventTitle',
+            title: 'Event Title',
             type: 'string',
-            fieldset: 'details',
             validation: rule => rule.required().max(150)
         }),
         defineField({
-            name: 'slug',
-            type: 'slug',
-            options: {
-                source: 'title',
-                maxLength: 200,
-                slugify: input => input.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').slice(0,200),
-            },
-            hidden: ({document}) => !document?.title,
-            validation: rule => rule.required().error(`Required to generate an event page`)
-        }),
-        defineField({
-            name: 'eventType',
-            type: 'string',
-            fieldset: 'details',
-            options:{
-                list: ['in-person', 'virtual'],
-                layout: 'radio',
-            }
+            name: 'coverImage',
+            title: 'Cover Image',
+            type: 'image',
+            options: { hotspot: true }
         }),
         defineField({
             name: 'eventBody',
+            title: 'Event Description',
             type: 'array',
-            fieldset: 'details',
-            description: 'Write a description for the event using our rich text editor!',
-            of: [{type: 'block'}],
+            description: 'Write a description for the event.',
+            of: [{type: 'block'}], 
         }),
-        //////
-        // SCHEDULE
+
+        // --- 2. THE "WHEN & WHERE" (Logistics Fieldset) ---
         defineField({
             name: 'startDate',
+            title: 'Start Date & Time',
             type: 'datetime',
-            fieldset: 'schedule',
+            fieldset: 'logistics',
             options: {
                 dateFormat: 'MM/DD/YYYY',
                 timeFormat: 'h:mm A',
                 timeStep: 15,
-                displayTimeZone: 'America/Chicago'
             },
             initialValue: (new Date()).toISOString().split('T')[0],
+            validation: rule => rule.required()
         }),
         defineField({
             name: 'endDate',
+            title: 'End Date & Time',
             type: 'datetime',
-            fieldset: 'schedule',
+            fieldset: 'logistics',
             options: {
                 dateFormat: 'MM/DD/YYYY',
                 timeFormat: 'h:mm A',
                 timeStep: 15,
-                displayTimeZone: 'America/Chicago'
             },
-            hidden: ({document}) => !document?.startDate,
-            initialValue: 'startDate',
+            // Automatically populate with the start date to save them a click
+            initialValue: (new Date()).toISOString().split('T')[0], 
             validation: rule => rule.min(rule.valueOfField('startDate')),
         }),
-        ////// ETC
         defineField({
-            name: 'venue',
-            type: 'reference',
-            to: [{type: 'location'}],
-            readOnly: ({value, document}) => !value && document?.eventType === 'virtual',
+            name: 'eventType',
+            title: 'Event Type',
+            type: 'string',
+            fieldset: 'logistics',
+            options:{
+                list: [
+                    {title: 'In-Person', value: 'in-person'},
+                    {title: 'Virtual', value: 'virtual'}
+                ],
+                layout: 'radio',
+            },
+            initialValue: 'in-person', // Default to save a click
         }),
         defineField({
-            name: 'coverImage',
-            type: 'image',
-            fieldset: 'details',
+            name: 'venue',
+            title: 'Venue Location',
+            type: 'reference',
+            fieldset: 'logistics',
+            to: [{type: 'location'}],
+            // UX MAGIC: Completely hides this field if it's a virtual event
+            hidden: ({document}) => document?.eventType === 'virtual',
+        }),
+
+        // --- 3. THE "ADMIN" (Advanced Fieldset, Collapsed) ---
+        defineField({
+            name: 'slug',
+            title: 'URL Slug',
+            type: 'slug',
+            fieldset: 'advanced',
+            description: 'Click generate to create the URL. Do not change this after the event is published!',
             options: {
-                hotspot: true,
-            }
+                source: 'eventTitle',
+                maxLength: 200,
+            },
+            validation: rule => rule.required()
+        }),
+        defineField({
+            name: 'topicTags',
+            title: 'Topics',
+            type: 'array',
+            fieldset: 'advanced',
+            of: [{type: 'reference', to: [{type: 'topic'}]}],
         }),
         defineField({
             name: 'status',
+            title: 'Event Status',
             type: 'string',
-            fieldset: 'details',
+            fieldset: 'advanced',
+            description: 'Only change this if the event is canceled or postponed.',
             options:{
-                list: ['scheduled', 'canceled', 'completed'],
+                list: [
+                    {title: 'Scheduled (Normal)', value: 'scheduled'}, 
+                    {title: 'Canceled', value: 'canceled'}, 
+                    {title: 'Postponed', value: 'postponed'}
+                ],
                 layout: 'radio',
             },
             initialValue: 'scheduled',
         }),
-        defineField({
-            name: 'topicTags',
-            type: 'array',
-            of: [{type: 'reference', to: [{type: 'topic'}]}],
-            description: 'Select an existing topic or create a new topic',
-        }),
-    ]
+    ],
+        preview: {
+        select: {
+            title: 'eventTitle',
+            subtitle: 'startDate',
+            media: 'coverImage',
+        },
+        prepare(selection) {
+            const {title, subtitle, media} = selection;
+            // Format the date nicely for the editor
+            const formattedDate = subtitle ? new Date(subtitle).toLocaleDateString() : 'No date set';
+            return {
+                title: title,
+                subtitle: formattedDate,
+                media: media
+            }
+        }
+    }
 })

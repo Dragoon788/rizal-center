@@ -1,269 +1,209 @@
-# Product Requirements Document (PRD)
+# Product Requirements Document
 
-**Project:** Rizal Center of Chicago Website  
-**Version:** 0.1 (Draft)  
-**Status:** Discovery / Planning  
-**Last Updated:** July 2026
-
----
-
-# Executive Summary
-
-The Rizal Center of Chicago website will be redesigned as a modern, content-driven web application that serves as the digital hub for the organization's community.
-
-The primary objective is to create an engaging, easily maintainable platform that enables volunteers and administrators to publish and manage site content without requiring software development experience.
-
-The application will use **Sanity** as a headless CMS and **Next.js** as the frontend framework. The backend architecture and deployment strategy are intentionally left open during this planning phase to allow flexibility as technical requirements become better understood.
-
-Rather than functioning as a static informational website, the new platform should become the central destination for discovering community news, events, resources, and announcements. Blogs and site content are easily indexable by Google search and should lead to expanded discovery of Rizal center resources from new target audiences.
+**Project:** Rizal Center of Chicago Website
+**Version:** 0.2
+**Status:** Discovery / Planning
+**Last Updated:** August 2026
 
 ---
 
-# Problem Statement
+## 1. Overview
 
-The current website is outdated and struggles to highlight the active parts of the community (events, blogs, updates, etc). Current site runs on wordpress which could be managable once upgraded, but still opens the door to security flaws and limited SEO. 
+The Rizal Center of Chicago website will serve as the organization's central digital hub for community information, activities, events, stories, announcements, and resources.
 
-The Rizal Center will need active help from non-technical volunteers to keep sitewide content up to date, but systems will not fall apart in stale states. Updating information should not require modifying source code or deploying the application and should be easily accessible and understood for non-technical audiences.
+Rather than functioning primarily as a static informational website, the platform should make it easy for visitors to discover what is happening at the Rizal Center and explore the broader community.
 
-Non-standard tools and content may require more technical understanding of the codebase and modern web technologies, but should be accessible by individuals with software engineerng experience in modern Web Development standards.
-
-Additionally, the website should:
-
-- Encourage community engagement
-- Improve discoverability through search engines
-- Make it easy to modify site content
-- Scale as the organization grows
-- Minimize ongoing maintenance costs
-- Improve site aesthetic and cleanliness
+The site should also make routine content management accessible to non-technical volunteers.
 
 ---
 
-# Vision
+## 2. Problem
 
-Create a community-first digital experience that enables visitors to easily discover everything happening within the Rizal Center while empowering volunteers to manage all content through an intuitive content management system. The goal is to merge disparate content and information platforms into a single site for accessing Rizal Center resources.
+The current website does not effectively communicate the breadth of activity happening within the Rizal Center.
 
-The website should feel alive, frequently updated, and capable of growing alongside the community. This site should provide the foundational structure and layout for the future growth of community tools and resources. 
+Important information such as events, stories, announcements, resources, and community programs can be difficult to discover and may be distributed across different sections or platforms.
 
----
+The organization also depends on volunteers to keep its website current. Routine updates should therefore not require code changes, deployments, or developer assistance.
 
-# Goals
-
-## Primary Goals
-
-- Build a community hub for members and visitors
-- Enable non-technical volunteers to publish content
-- Improve SEO through modern web technologies
-- Create a scalable content architecture
-- Improve long-term maintainability
-- Reduce technical overhead for future volunteers
+The new website should provide a single, maintainable destination for this information.
 
 ---
 
-# Success Metrics
+## 3. Vision
 
-The project will be considered successful if it achieves the following:
+Create a community-first website where people can easily discover:
 
-### Community Engagement
+* What is happening at the Rizal Center
+* Events they can attend
+* Stories and updates from the community
+* Resources provided by the organization
+* Areas of activity that interest them
 
-- Visitors regularly return for new content
-- Increased visibility of upcoming events
-- Increased interaction with community resources
-
-### Content Management
-
-- Administrators can publish content without developer assistance
-- New pages and content can be created entirely through Sanity
-- Content updates require no code changes
-
-### Technical
-
-- Excellent search engine optimization
-- Fast page load performance
-- Mobile-friendly experience
-- Accessible user interface
-- Secure modern architecture
+The website should feel active and current while remaining simple enough for volunteers to maintain.
 
 ---
 
-# Target Audience
+## 4. Goals
 
-## Primary Audience
+### Primary Goals
 
-General public
+* Create a central digital hub for the Rizal Center
+* Improve discovery through search engines
+* Make upcoming events easy to find
+* Make community content easy to explore
+* Enable non-technical volunteers to manage content
+* Create a maintainable content structure
+* Minimize ongoing technical and financial overhead
+* Provide a foundation for future community features
+
+---
+
+## 5. Target Audience
+
+### General Public
 
 Including:
 
-- Community members
-- Families
-- Prospective members
-- Volunteers
-- Event attendees
-- Individuals interested in Filipino culture and programming (V2)
+* Community members
+* Families
+* Prospective members
+* Volunteers
+* Event attendees
+* People interested in Filipino culture and programming
+
+The site should not assume that visitors already understand the structure of the Rizal Center.
 
 ---
 
-# Product Principles
+## 6. Core User Experiences
 
-The project should follow several guiding principles.
+### 6.1 Homepage Discovery
 
-## Community First
+A returning visitor should be able to visit the homepage and quickly understand what is happening at the Rizal Center.
 
-The homepage should immediately communicate what is happening within the organization.
+The homepage should surface:
 
-Content should encourage exploration rather than functioning as a static brochure.
+* Upcoming events
+* Current announcements
+* Featured stories
+* Resources
+* Other important calls to action
 
----
-
-## Content Driven
-
-Nearly everything visible on the website should originate from Sanity.
-
-Developers should rarely need to modify code simply to update website content.
+The homepage is an aggregation of existing content rather than a collection of manually maintained copies.
 
 ---
 
-## Low Maintenance
+### 6.2 Search Discovery
 
-Future volunteers should be able to maintain the website without requiring software engineering knowledge.
+A new visitor may discover the Rizal Center through Google.
 
----
+Search-friendly individual pages should allow visitors to arrive directly at:
 
-## Performance First
+* Events
+* Stories
+* Resources
+* Announcements
+* Topics
 
-Pages should load quickly while maintaining excellent accessibility and SEO.
-
----
-
-## Scalable
-
-The content model should support adding entirely new content types in the future with minimal architectural changes.
+After arriving, visitors should have opportunities to continue exploring related Rizal Center content.
 
 ---
 
-## Cost Conscious
+### 6.3 Topic Discovery
 
-The technology stack should minimize recurring costs while remaining secure and maintainable.
+Visitors should be able to explore the Rizal Center through areas of interest.
 
----
+Examples include:
 
-# User Stories
+* Arts, Culture & Theater
+* Dancing
+* Martial Arts
+* Pamana Children's Library
 
-## Visitor
+A Topic page should act as a hub for related content, including:
 
-As a visitor, I want to quickly understand what is happening in the community.
+* Upcoming events
+* Stories
+* Announcements
+* Resources
 
-As a visitor, I want to browse upcoming events.
-
-As a visitor, I want to read community blog posts.
-
-As a visitor, I want to discover resources offered by the organization.
-
-As a visitor, I want to browse previous newsletters.
-
----
-
-## Administrator
-
-As an administrator, I want to publish announcements.
-
-As an administrator, I want to create events.
-
-As an administrator, I want to upload images.
-
-As an administrator, I want to manage blog posts.
-
-As an administrator, I want to feature important content on the homepage.
+Topics provide an alternative discovery path to browsing individual content types.
 
 ---
 
-# Functional Requirements
+### 6.4 Content Discovery
 
-## Homepage
+Individual content pages should not be dead ends.
 
-The homepage acts as an aggregation layer rather than containing unique content.
+Where appropriate, visitors should be able to:
 
-It should display:
-
-- Featured blog posts
-- Upcoming events
-- Active announcements
-- Community resources
-- Latest newsletter
-- Calls to action
-
-Each section should contain a preview with links to dedicated pages.
+* View the Topic associated with the content
+* Discover related content
+* Return to broader content collections
+* Continue exploring the Rizal Center
 
 ---
 
-## Blog
+## 7. Content Types
 
-The website should support:
+The initial website will support the following core content types:
 
-- Blog listing page
-- Individual blog pages
-- Featured images
-- Rich text content
-- Author information
-- Publish dates
+### Events
 
----
+Time-based activities that visitors may attend.
 
-## Events
+### Posts
 
-Support:
+Community stories, news, updates, and other editorial content.
 
-- Upcoming events
-- Individual event pages
-- Event descriptions
-- Images
-- Date and time
-- Location
-- RSVP integration (future)
+### Announcements
 
-Future versions may include:
+Time-sensitive information that the organization wants to communicate.
 
-- Calendar view
-- Event filtering
+### Resources
 
----
+Useful documents, links, and information provided by the Rizal Center.
 
-## Announcements
+### Newsletters
 
-Administrators should be able to publish time-sensitive announcements.
+Archived newsletters published by the organization.
 
-Announcements may appear:
+### Topics
 
-- Homepage banner
-- Announcement archive
+Persistent areas of interest that connect related content.
+
+### Authors
+
+People associated with published posts.
 
 ---
 
-## Resources
+## 8. Topics
 
-Support community resources including:
+Topics represent meaningful areas of activity or interest within the Rizal Center.
 
-- External links
-- Downloadable documents
-- Categorized resources
+Topics are intended to replace separate program pages when those pages primarily serve as hubs for information about an area of activity.
+
+A Topic should not exist simply because a single piece of content happens to mention a subject.
+
+Topics should represent meaningful, persistent areas that visitors may want to explore.
+
+Content may be associated with one or more Topics when doing so improves discovery.
+
+Topics should be curated rather than treated as arbitrary user-generated tags.
 
 ---
 
-## Newsletter Archive
+## 9. Information Architecture
 
-Monthly newsletters should be stored as searchable archived content.
-
----
-
-# Information Architecture
-
-```
+```text
 Home
-│
-├── Blog
-│   └── Blog Article
 │
 ├── Events
 │   └── Event Detail
+│
+├── News & Stories
+│   └── Post Detail
 │
 ├── Announcements
 │
@@ -272,236 +212,156 @@ Home
 ├── Newsletter
 │   └── Monthly Issue
 │
+├── Topics
+│   └── Topic
+│       ├── Upcoming Events
+│       ├── Related Stories
+│       ├── Announcements
+│       └── Resources
+│
 └── About
 ```
 
----
-
-# Content Model
-
-Initial content types include:
-
-## Post
-
-- Title
-- Slug
-- Author
-- Featured Image
-- Body
-- Publish Date
-- Featured Flag
+The exact navigation may change as the site develops, but the distinction between **content types** and **Topics** should remain.
 
 ---
 
-## Event
+## 10. Editorial Experience
 
-- Title
-- Slug
-- Description
-- Start Date
-- End Date
-- Location
-- Featured Image
-- RSVP Link (future)
+Routine website management should be possible through Sanity without developer assistance.
 
----
-
-## Announcement
-
-- Title
-- Body
-- Active
-- Start Date
-- End Date
-
----
-
-## Resource
-
-- Title
-- Description
-- Category
-- External Link
-- Uploaded File
-
----
-
-## Newsletter
-
-- Title
-- Month
-- Body
-- Cover Image
-
----
-
-## Author
-
-- Name
-- Biography
-- Photo
-
----
-
-# Editorial Workflow
-
-Content editors should perform all routine website management through Sanity.
-
-Typical workflow:
+A volunteer should be able to:
 
 1. Create content
-2. Preview content
-3. Publish
-4. Automatically update website
+2. Enter the relevant information
+3. Associate the content with an existing Topic when appropriate
+4. Preview the content
+5. Publish it
 
-No developer involvement should be required for routine publishing.
+Topic management should remain separate from routine content creation.
 
----
+Most volunteers should select from existing Topics rather than create new ones.
 
-# Technical Architecture
-
-## Frontend
-
-- Next.js
-
-## Content Management
-
-- Sanity CMS
-
-## Query Layer
-
-- GROQ
-
-## Backend
-
-For V1, there will be no needed backend to support the current functionality. All funcitonality will be groq queries to sanity for posts, comments, announcements, and site content.
-
-## Hosting
-
-Currently planning to integrate with cloudflare workers for a minimial cost, quick loading solution for hosting. If the website needs to be scaled to more users, cloudflare's paid plan ($5 monthly subscription) is a reasonable enough price.
+Trusted administrators may create or modify Topics as the organization's structure evolves.
 
 ---
 
-# Non-Functional Requirements
+## 11. Non-Functional Requirements
 
-## SEO
+### SEO
 
-- Server-side rendering where appropriate
-- Metadata management
-- Open Graph support
-- Structured URLs
+The site should support:
 
----
+* Search-engine-friendly URLs
+* Metadata
+* Open Graph information
+* Indexable content pages
+* Search-friendly Topic pages
+* Internal linking between related content
 
-## Performance
+### Performance
 
-- Fast page loads
-- Optimized images
-- Efficient caching
-- Minimal client-side JavaScript
+The site should prioritize:
 
----
+* Fast page loads
+* Optimized images
+* Efficient caching
+* Minimal client-side JavaScript
 
-## Accessibility
+### Accessibility
 
-Target WCAG AA compliance.
+The site should target WCAG AA compliance.
 
----
+### Maintainability
 
-## Security
-
-- Secure administrative access
-- Modern authentication
-- Managed content permissions
+Routine content changes should not require source-code changes or application deployments.
 
 ---
 
-# Future Roadmap
+## 12. Success Criteria
 
-The following features are intentionally out of scope for Version 1 but should influence future architecture.
+### Community
 
-Potential enhancements include:
+* Visitors can quickly discover upcoming activities
+* Visitors can explore multiple areas of the organization
+* Visitors return to discover new content
 
-- Event calendar
-- Volunteer signup
-- Newsletter signup
-- Search
-- Related content
-- Content tagging
-- RSS feed
-- Social sharing improvements
-- Donations
-- Member portal
+### Content Management
 
----
+* Volunteers can publish routine content independently
+* Content updates do not require code changes
+* Topics can be managed without developer involvement
 
-# Open Questions
+### Discovery
 
-The following architectural decisions remain open.
+* Content can be discovered through search engines
+* Individual pages encourage continued exploration
+* Topic pages provide useful collections of related content
 
-- Backend architecture
-- Hosting provider
-- Authentication strategy
-- Event RSVP integration
-- Newsletter platform
-- Volunteer management workflow
-- Search implementation
+### Technical
+
+* Fast and responsive experience
+* Accessible interface
+* Strong SEO fundamentals
+* Maintainable architecture
+* Low ongoing operating cost
 
 ---
 
-# Development Phases
+## 13. V1 Scope
 
-## Phase 1
+### Included
 
-- Project setup
-- Next.js application
-- Sanity integration
+* Homepage
+* Events
+* Posts
+* Announcements
+* Resources
+* Newsletter archive
+* Topics
+* Sanity CMS
+* SEO fundamentals
+* Responsive design
+* Accessibility fundamentals
 
----
+### Future
 
-## Phase 2
+Potential future functionality includes:
 
-- Define content schemas
-- Editorial workflows
-
----
-
-## Phase 3
-
-- Build core pages
-- Blog
-- Events
-- Resources
-- Newsletter
-
----
-
-## Phase 4
-
-- Homepage aggregation
-- Featured content
-- Navigation
+* Event calendar
+* Event filtering
+* RSVP management
+* Volunteer signup
+* Newsletter signup
+* Site search
+* Donations
+* Member portal
+* Advanced related-content features
 
 ---
 
-## Phase 5
+## 14. Product Principles
 
-- Styling
-- Accessibility
-- Performance optimization
+### Community First
 
----
+The site should communicate what is happening within the organization.
 
-## Phase 6
+### Content Driven
 
-- Deployment
-- Documentation
-- Production launch
+Website content should primarily be managed through the CMS.
 
----
+### Low Maintenance
 
-# Assumptions
+The system should minimize technical knowledge required for routine management.
 
-This document represents the current understanding of the project during the discovery phase.
+### Discoverable
 
-Implementation details may change as technical decisions are finalized, but the product vision and user experience should remain the guiding principles throughout development.
+Visitors should be able to find the organization through search and explore naturally after arriving.
+
+### Scalable
+
+The content model should accommodate future growth without requiring a redesign of the entire site.
+
+### Cost Conscious
+
+The platform should remain affordable to operate and maintain.

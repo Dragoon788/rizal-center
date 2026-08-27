@@ -9,14 +9,14 @@ import { defineField, defineType } from "sanity";
 
 export const resource = defineType({
     name: "resource",
-    type: "document",
+    type: "object",
     icon: InfoOutlineIcon,
     fields: [
         defineField({
             name: "title",
             title: "Resource Title",
             type: "string",
-            placeholder: "Ex: Alliance of Filipinos for Immigrant Rights and Empowerment (AFIRE) Chicago",
+            placeholder: "Ex: Chicago Immigration Court",
             validation: rule => rule.required().max(100),
         }),
         defineField({
@@ -29,11 +29,17 @@ export const resource = defineType({
             name: "description",
             title: "Resource Description",
             type: "text",
-            placeholder: "Write a short description describing the resource.",
+            placeholder: "Write a short description describing what the resource is",
+        }),
+        defineField({
+            name: 'contact_info',
+            type: 'string',
+            placeholder: 'Ex: (312) 294-8400',
         }),
         defineField({
             name: 'location',
             type: 'reference',
+            title: 'Location (optional)', 
             to: [{type: 'location'}],
         })
     ],
@@ -47,28 +53,29 @@ export const resourceList = defineType({
     fields: [
         defineField({
             name: "title",
-            title: "Resource List Title",
+            title: "Title",
             type: "string",
             placeholder: "Ex: External Immigration Resources",
             validation: rule => rule.required().max(50),
         }),
         defineField({
-            name: "description",
-            title: "Resource List Description",
-            type: "text",
-            placeholder: "Write a short description describing the resource.",
+            name: 'topic',
+            type: 'array',
+            of: [{type: 'reference', to: [{type: 'topic'}]}],
+            description: 'Topics group related content and help visitors discover events, posts, announcements, and resources around an area of interest.'
         }),
         defineField({
             name: "resources",
             type: "array",
-            of: [{type: 'reference', to: [{type: 'resource'}]}],
+            of: [{type: 'resource'}],
+            description: 'Add, edit, or reorder items in this resource collection. Drag items to change their display order on the page.',
             validation: rule => rule.required(),
         }),
         defineField({
-            name: 'topic',
-            type: 'reference',
-            to: [{type: 'topic'}],
-            description: 'Try using an existing topic for a better user experience!'
+            name: "description",
+            title: "Description (optional)",
+            type: "text",
+            placeholder: "Write a short description about the resource List.",
         }),
     ],
 });

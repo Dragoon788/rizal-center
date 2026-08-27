@@ -2,8 +2,9 @@
 import {UsersIcon} from '@sanity/icons/Users'
 import { defineField, defineType } from "sanity";
 
-export const author = defineType({
-    name: "author",
+export const profile = defineType({
+    name: "profile",
+    title: "People",
     type: "document",
     icon: UsersIcon,
     fields: [
@@ -14,13 +15,16 @@ export const author = defineType({
             validation: rule => rule.required(),
         }),
         defineField({
+            name: "profile_image",
+            type: "image",
+            options: {
+                hotspot: true
+            },
+        }),
+        defineField({
             name: "bio",
             type: "text",
             placeholder: "Write a short description about yourself!",
-        }),
-        defineField({
-            name: "profile_image",
-            type: "image",
         }),
     ],
 });

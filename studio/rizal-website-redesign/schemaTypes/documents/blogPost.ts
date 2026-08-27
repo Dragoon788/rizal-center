@@ -39,7 +39,7 @@ export const blogPost = defineType({
         defineField({
             name: 'author',
             type: 'reference',
-            to: [{type: 'author'}]
+            to: [{type: 'profile'}]
         }),
         defineField({
             name: 'publishDate',

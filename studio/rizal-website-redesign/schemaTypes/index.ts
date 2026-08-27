@@ -1,4 +1,4 @@
-import { author } from './documents/author';
+import { profile } from './documents/profile';
 import { homePage } from './singletons/homePage';
 import { resource, resourceList } from './documents/resource'
 import { location } from './documents/location'
@@ -11,7 +11,7 @@ import { gallery } from './documents/gallery';
 
 // export const schema: { types: SchemaTypeDefinition[] } = {
 //   types: [
-export const schemaTypes = [author, 
+export const schemaTypes = [profile, 
                             homePage, 
                             resource, 
                             resourceList, 
