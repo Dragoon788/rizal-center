@@ -1,17 +1,17 @@
 ---
 title: Rizal Center of Chicago Website
-version: 1.0
+version: 1.2
 status: Prototype definition
 created: 2026-08
-updated: 2026-08-28
+updated: 2026-08-29
 ---
 
 # Product Requirements Document
 
 **Project:** Rizal Center of Chicago Website
-**Version:** 1.0 — Prototype Definition
+**Version:** 1.2 — Prototype Definition
 **Status:** Ready for build
-**Last Updated:** 2026-08-28
+**Last Updated:** 2026-08-29
 **Delivery window:** 6–8 weeks
 
 ---
@@ -24,75 +24,79 @@ The existing WordPress site stays live and untouched throughout. The prototype e
 
 > Should the Rizal Center invest in replacing its website with this?
 
-Everything in this document is scoped to that question. Public traffic, search rankings, and URL preservation are **not** prototype concerns; they are recorded in §16 as launch gates so the prototype's deliberate omissions don't become permanent ones.
+Everything here is scoped to that question. Public traffic, search rankings, and URL preservation are **not** prototype concerns — they are recorded in §15 as launch gates so deliberate omissions don't become permanent ones.
 
 Technology decisions live in [architecture.md](architecture.md). Delivery sequencing lives in [epics.md](epics.md).
 
 ---
 
-## 2. The Core Product
+## 2. Problem
 
-> **A credibility engine with a conversion exit.**
+### 2.1 The Center is far more active than its website reveals
+
+This is the core problem, and it is a gap between reality and presentation rather than a shortage of anything.
+
+The Rizal Center runs eight or more classes a week across multiple instructors and partner gyms. It hosts coffee talks, line dancing, workshops, and cultural programming. Its archive holds hundreds of posts on Filipino and Filipino American life, dozens of photo galleries, and years of newsletters.
+
+A visitor to the current site sees almost none of it.
+
+This matters because a website that looks quiet reads as an organization that *is* quiet — to a newcomer deciding whether to visit, to a regular deciding where to look for information, and to a funder deciding whether the Center is worth supporting.
+
+### 2.2 Information about the Center is scattered
+
+Events, posts, announcements, resources, galleries, and program information live in different places and different platforms. There is no single destination that holds all of it, so no reliable answer to "where do I look?"
+
+### 2.3 What is *not* the problem
+
+Named explicitly, because each of these is a real thing that is nonetheless not what this project is solving:
+
+* **Duplicated publishing effort.** The Center currently maintains events on both Facebook and the website. That's real, and it is not a prototype concern — see §18.
+* **Program pages requiring manual setup.** Also real, also not core.
+* **Volunteers being unable to manage content.** WordPress already solves this. It is a **constraint to preserve**, not a problem to fix — see §5.
+
+---
+
+## 3. The Core Proposition
+
+> **A central digital hub that makes the Center's community work visible.**
 >
-> A visitor arrives — from a search, a shared link, or Facebook — quickly believes the Rizal Center is real, active, and welcoming, and is given something to do: attend, donate, volunteer, or get in touch.
+> Its homepage carries a **community pulse** — a live mix of what's coming up and what just happened, across everything the Center does — on a foundation built to support future community tools without redesign.
 
-Two halves, both required:
+Three parts, each load-bearing:
 
-* **Credibility** comes from visible activity. A full class schedule, upcoming events, recent posts, a real board, a findable address. A site that looks tended looks like an organization worth supporting.
-* **Conversion** comes from always being asked. Donate and volunteer are present on every page, not buried on one.
+1. **The hub.** One destination holding the Center's information. It does not have to be *complete* in the prototype; it has to stand on its own.
+2. **The pulse.** The mechanism that makes activity visible. §7 specifies it in detail because the whole proposition depends on it.
+3. **The foundation.** Structured content and a content model that accommodates galleries, newsletters, RSVP, and community tools later without reworking what exists.
 
-Everything else in this document — Topics, structured content, SEO, archives — is machinery that makes those two things true and keeps them true without anyone maintaining them.
-
----
-
-## 3. Problem
-
-### 3.1 The same work is done twice *(primary)*
-
-Today an event or update is published **twice**: once to Facebook, once to the website.
-
-Facebook is where the Center's audience already is, and posting there is fast and familiar. The website is slower, reaches fewer people, and takes more effort. When a volunteer has limited time, posting to Facebook first is not laziness — it is rational triage.
-
-The result is predictable: effort spent twice, two sources that drift, and **the website loses**. It goes stale, which further reduces the reason to maintain it.
-
-A new website that becomes a *third* place to publish fails the same way. Reducing duplicated effort is a design constraint, not a feature.
-
-### 3.2 Every program area needs a hand-built page
-
-The Center runs martial arts classes, arts programming, cultural gatherings, immigration support, and more. Under the current arrangement, each of these needs a page somebody builds by hand and somebody remembers to update.
-
-Nobody remembers. Program pages go stale, and adding a new one requires a developer.
-
-### 3.3 The breadth of activity is invisible
-
-Events, posts, announcements, and resources are scattered. A visitor interested in one area of activity has no reliable path to everything related to it — and the Center's actual range is far wider than the site suggests.
-
-### 3.4 Routine updates depend on developer availability
-
-Volunteers maintain the content. Routine updates must not require code changes, deployments, or developer help.
+The critical insight behind all three: **the Center doesn't need to produce anything new to feel alive.** It needs a site that surfaces what it's already doing. That makes this achievable in the prototype, with no new volunteer burden and no dependency on anything outside the organization.
 
 ---
 
-## 4. Vision
+## 4. Goals
 
-A community-first website where people can easily discover what's happening at the Rizal Center, what they can attend, what the Center stands for, and how to get involved — and where **maintaining it takes less total effort than the current arrangement, not more.**
-
----
-
-## 5. Goals
-
-Each goal traces to something the Center's administration actually asked for.
-
-| # | Goal | Serves |
+| # | Goal | Why |
 | --- | --- | --- |
-| G1 | Make donating obvious and easy from anywhere on the site | *donations* |
-| G2 | Show what's happening — the class schedule, upcoming events, and what already happened | *upcoming and past events* |
-| G3 | Explain what the Center is, who runs it, where it is, and how to reach it | *informational platform* |
-| G4 | Make volunteering a visible, one-click ask | *enlist volunteers* |
-| G5 | Let the admin add a program area without a developer | *program pages, maintainability* |
-| G6 | Reduce duplicated publishing effort | §3.1 |
-| G7 | Be findable by people who don't know the Center exists | discovery |
-| G8 | Keep operating cost and maintenance burden near zero | sustainability |
+| G1 | Make the Center's activity visible at a glance | §2.1 — the core problem |
+| G2 | Be the single destination for information about the Center | §2.2 |
+| G3 | Build a content foundation that supports future community tools without redesign | §3 |
+| G4 | Show what's happening — the class schedule, upcoming events, and what recently happened | administration priority |
+| G5 | Make donating obvious and easy from anywhere | administration priority |
+| G6 | Explain what the Center is, who runs it, where it is, how to reach it | administration priority |
+| G7 | Make volunteering a visible, one-click ask | administration priority |
+| G8 | Be findable by people who don't know the Center exists | discovery |
+
+**G3 has a test**, so it doesn't drift into platitude: *for each plausible future feature — galleries, web-native newsletters, RSVP, member accounts, site search — can it be added without changing existing content types?*
+
+---
+
+## 5. Constraints
+
+Not goals. Things that must remain true, where the bar is *match what exists*, not improve on it.
+
+* **Non-technical volunteers must be able to manage content.** WordPress delivers this today. Regressing here fails the project regardless of what else is achieved.
+* **Near-zero operating cost.** A requirement, not an aspiration.
+* **Routine content changes never require code or deployments.**
+* **Visual design is adopted, not invented.** An existing design system, restyled. Nobody will evaluate the originality of the design system, and hours spent there are hours not spent on §7.
 
 ---
 
@@ -100,21 +104,19 @@ Each goal traces to something the Center's administration actually asked for.
 
 ### 6.1 Visitors
 
-Two groups, both first-class:
+* **Newcomers** arriving cold — from search, a shared link, or word of mouth. They need orientation first: what is this, is it real, is it for me.
+* **Regulars** crossing over from Facebook. They need current information fast, without scrolling past an introduction they don't need.
 
-* **Newcomers** arriving cold — from a search, a shared link, or word of mouth. They need orientation before anything else: what is this, is it real, is it for me.
-* **Regulars** crossing over from Facebook. They need current information fast and shouldn't have to scroll past an introduction they don't need.
+Also in scope and easy to forget: **funders and partners** doing due diligence, who read the same signals as a newcomer and read them more harshly.
 
-The homepage serves both by leading with a short identity line above genuinely current content (§9.2).
-
-Also in scope, and easy to forget: **funders and partners** doing due diligence. They evaluate the same signals as a newcomer, more harshly.
+The homepage serves all of them via §7 — a hero that orients, a pulse that informs.
 
 ### 6.2 Editors and Admin
 
-* **1–2 Editors** — volunteers who create Events, Posts, and Announcements.
+* **1–2 Editors** — volunteers creating Events, Posts, and Announcements.
 * **1 Admin** — additionally curates Topics and site-level content.
 
-At three people, **convention beats enforcement.** Editorial boundaries in §12 are agreements, not permission systems to be built.
+At three people, **convention beats enforcement.** Editorial boundaries in §11 are agreements, not permission systems to build.
 
 ### 6.3 Not the audience for the prototype
 
@@ -122,125 +124,131 @@ The general public and search engines. The current site continues to serve them.
 
 ---
 
-## 7. Glossary
+## 7. The Community Pulse
 
-Used consistently throughout. No synonyms.
+The homepage centrepiece and the answer to §2.1. A single stream mixing everything currently relevant, with filter pills.
 
-* **Event** — A dated activity. May recur on a schedule, with individual occurrences editable.
-* **Class schedule** — The Center's standing weekly programming, presented as a timetable rather than a list of dates.
-* **Announcement** — Time-sensitive information. Surfaced by recency and by pinning; it has no expiry date.
-* **Post** — A story, news item, or update. Authored by a Person.
-* **Resource** — A useful link, document, or contact. Always lives inside a Resource List; never has its own page.
-* **Resource List** — A curated, ordered collection of Resources on a shared theme.
-* **Topic** — A **program area that renders itself.** See §8.
-* **Person** — Anyone named on the site: author, board member, instructor.
-* **Location** — A physical venue an Event references.
-* **Featured slot** — A single position at the top of the homepage main column holding one piece of content.
-* **The ask** — Donate and volunteer calls to action, present sitewide.
+A unified feed matters because **segmented sections make a busy organization look like four quiet ones.** One stream shows volume; four regions divide it.
+
+### 7.1 What's in it
+
+Upcoming Events, recent Posts, and recent Announcements. One card per document.
+
+**Completed events are not in the pulse.** If something notable happened, someone writes about it — and that post is the pulse item. A finished event card is redundant with the content describing it, and a dead end for a visitor scanning for something to attend. Past events stay browsable on the Events surface (§12.1).
+
+### 7.2 Ordering
+
+Every item has a **pulse date**:
+
+| Type | Pulse date |
+| --- | --- |
+| Post | published date |
+| Announcement | published date |
+| Event (one-off) | start date |
+| Event (recurring) | next upcoming occurrence |
+
+Items sort by **proximity to today** — absolute distance from now, regardless of direction. An event in two days and a post from two days ago sit side by side. Things nearest *now* rise to the top.
+
+Ties break in favour of the upcoming item.
+
+This rule is chosen for being **explainable**. The Admin can predict what lands at the top, which matters — an unpredictable feed is one they'll fight. No weights, no tuning.
+
+It also produces a property worth having deliberately: because upcoming events climb as they approach and posts sink as they age, **the pulse reorders itself daily even when nobody publishes.** The homepage visibly changes with no volunteer effort at all — the "feels alive" goal served *by* the untended case rather than in spite of it.
+
+### 7.3 Windows, and the guarantee
+
+| Type | Preferred window |
+| --- | --- |
+| Events | upcoming only — roughly the next 14 days |
+| Posts, Announcements | roughly the last 30 days |
+
+Both figures are tunable knobs, not commitments. They want adjusting once real content is in the feed.
+
+**The window is a preference; the item count is the guarantee.** Target around 12 items. If the window doesn't produce enough, widen it until it does.
+
+This is the most important rule in the section. The pulse *is* the "feels alive" claim, and an empty pulse doesn't say "a quiet week" — it says "abandoned site." Reaching further back is always better than showing a gap.
+
+### 7.4 Recurring events
+
+A recurring class is **one document and one card**, showing its times for the week:
+
+> **CL Grappling** · Tue 7:00 PM · Sun 9:00 AM
+
+Not one card per occurrence. With eight or more classes a week, per-occurrence cards would drown everything else and the pulse would become a martial arts feed. One card per program keeps the mix honest and is more useful to a visitor besides.
+
+A genuinely special one-off inside a program — a tournament, a showcase — is a normal Event and appears on its own.
+
+Note the deliberate asymmetry with §12.1: **the Events calendar expands recurrences; the pulse collapses them.** A grappling class appears on every date it runs in the calendar, and once with its weekly times in the pulse. Same document, two renderings, each correct for its context.
+
+### 7.5 Card requirements
+
+* **A temporal label on every card** — "In 3 days" · "Yesterday" · "Last Tuesday". Non-negotiable: a list silently mixing past and future is disorienting, and the label is what makes proximity-sorting legible rather than arbitrary.
+* Type indicated, matching the filter pills
+* Title, image where available, short excerpt
+* Links to the item's own page
+
+### 7.6 Pills
+
+Filter within the pulse by type. Pills are a legitimate exception to the minimal-JavaScript preference — client-side filtering over an already-loaded feed is what makes it feel instant, and *instant* is the point.
+
+Pill labels are **visitor-facing copy, not schema names.** "Events · Stories · Updates" likely reads better to a community member than "Events · Posts · Announcements."
+
+### 7.7 One component, two uses
+
+**A Topic page is the same pulse, scoped to one topic.** Same cards, same pills, same ordering.
+
+Build it once and parameterize it. This is why §8 is inexpensive, and it removes any need for topic pages to hide empty sections — there are no fixed regions to be empty, just fewer items and fewer pills.
 
 ---
 
-## 8. The Differentiator: Topics
+## 8. Topics
 
-A Topic is not a tag. **A Topic is a program area that renders its own page.**
+A Topic is a **persistent area of the Center's activity** that gets its own page: *Filipino Martial Arts*, *Arts & Theater*.
 
-The Admin creates a Topic document — *Filipino Martial Arts* — and a page exists at a stable URL. Editors tag content to it as they publish. The page fills and stays current with no further work from anyone.
+**Called "Programs" in the interface.** "Topic" is internal vocabulary — visitors and Editors see *Programs* in the navigation, on the page, and in the Studio. Keep the schema type name as it is and set its display title; no migration needed. This document uses "Topic" for the schema concept and "Programs" for anything a person reads.
 
-That is the mechanism behind G5, and it's the single thing this site does that the current one cannot: **the Admin can add a new program area without calling a developer, and it never goes stale.**
+The Admin creates a Topic document, Editors tag content to it, and the page exists at a stable URL and stays current on its own. It's a second path through the hub — by area of interest rather than by recency or type — and it's how the *breadth* of community work becomes visible rather than just the most recent slice.
 
 ### 8.1 Rules
 
-* Topics are **curated by the Admin**, not created ad hoc by Editors.
-* Topics are **optional** on content. Forcing a topic onto everything pushes content into areas where it doesn't belong, which destroys the reason to trust a Topic page. Untagged content remains discoverable on its type's index page.
-* Topics are **flat**. No nesting. If something belongs to two, tag both.
-* Topics are **prominent** in the editing form — a primary field, never filed under advanced settings. A field nobody sees is a field nobody fills, and unfilled topics render empty pages.
-* A Topic exists because it's a **persistent area of activity**, not because a post mentioned a subject once.
+* **Curated by the Admin.** Editors select; they don't create.
+* **Optional on content.** Forcing a topic onto everything pushes content into areas where it doesn't belong, which destroys the reason to trust a Topic page. Untagged content stays discoverable in the pulse and on its type's index.
+* **Flat.** No nesting. If something belongs to two, tag both.
+* **Prominent in the editing form** — a primary field, never filed under advanced settings. A field nobody sees is a field nobody fills.
 
-### 8.2 Two shapes of Topic page
+### 8.2 At launch
 
-The Center's activity is unevenly distributed, and Topic pages must handle both extremes:
-
-* **Program-led** — heavy on schedule and events, light on writing. *Filipino Martial Arts* is the archetype: the visitor wants when, where, cost, and who to contact.
-* **Editorial-led** — heavy on posts and resources, no recurring events. *Immigration & Support* is the archetype: the visitor wants reading, context, and useful links.
-
-**Sections on a Topic page hide when empty.** This is a requirement, not a refinement — without it, every Topic page displays its own gaps.
-
-### 8.3 Topics at launch
-
-| Topic | Visitor intent | Shape |
-| --- | --- | --- |
-| Filipino Martial Arts | I want to train | Program-led |
-| Arts & Theater | I want to watch or perform | Editorial with events |
-| Community Life | I want to belong — gatherings, shared meals | Mixed |
-| Immigration & Support | I need help | Editorial with resources |
-| Heritage & Language | I want to learn where I come from | Editorial |
+| Topic | Visitor intent |
+| --- | --- |
+| Filipino Martial Arts | I want to train |
+| Arts & Theater | I want to watch or perform |
+| Community Life | I want to belong — gatherings, shared meals |
+| Immigration & Support | I need help |
+| Heritage & Language | I want to learn where I come from |
 
 Optional sixth if content supports it: **Pamana Children's Library**.
 
-Two notes:
-
-* **Community Life is the one at risk** of becoming the drawer where everything lands. It must be defined positively — gatherings and shared meals — not as "other." If press releases start collecting there, it's failing.
-* **This set is cheap to change.** Adding a Topic is a document, not a deployment. Launch with four or five and split one out when its content earns a page.
+* **Community Life is the one at risk** of becoming the drawer where everything lands. It must be defined positively — gatherings and shared meals — not as "other."
+* **This set is cheap to change.** Adding a Topic is a document, not a deployment. Launch with four or five; split one out when its content earns a page.
 
 ---
 
-## 9. Core Experiences
+## 9. The Homepage
 
-### 9.1 Publish once, appear everywhere
+**Hero banner** — orients a newcomer in one glance: what the Rizal Center is.
 
-An Editor enters an Event once. Without further work it appears on the events page, on the homepage if upcoming, on each tagged Topic page, and — when its URL is pasted into Facebook or a group chat — as a clean **share card** with the right image, title, and description.
+**Featured slot** — one Admin-pinned item, above the pulse.
 
-That last item is small to build and does real work: the Facebook workflow the Center already relies on becomes *easier*, because a volunteer pastes a link instead of rebuilding the post. It attacks §3.1 without any dependency on social platform APIs.
+**Community pulse** — §7. The main column.
 
-### 9.2 The homepage
+**Sidebar — things that stay true.** Divided from the main column by *permanence*, not importance:
 
-Two zones on desktop, divided by **permanence** rather than importance:
-
-**Main column — things that change**
-
-* One short identity line: what the Rizal Center is
-* The **featured slot** — a single pinned item, chosen by the Admin
-* Upcoming events and the current class schedule
-* Recent announcements
-* Recent posts
-
-**Sidebar — things that stay true**
-
-* The ask: donate and volunteer
+* Donate and volunteer
 * A pinned Resource List
 * Visit information
 * Topics, as entry points to the Center's program areas
 
-On mobile the sidebar collapses beneath the main column. Nothing in the sidebar is duplicated content requiring separate maintenance.
-
-### 9.3 What's happening
-
-The Center's programming is mostly **standing weekly classes**, not one-off events. A site that shows only dated events would misrepresent most of what the Center does.
-
-So "what's happening" has two faces:
-
-* **The schedule** — recurring programming as a weekly timetable
-* **Events** — dated one-offs, upcoming and past
-
-Past events are **not** an archive to be hidden. They are evidence of activity, which is exactly what earns credibility with newcomers and funders.
-
-### 9.4 The ask
-
-Donate and volunteer appear sitewide — header, footer, and homepage sidebar. Both link out: **Zeffy** for donations, a **Google Form** for volunteering.
-
-The Center's conversion layer is deliberately external (§18). The site's job is to ask well and hand off cleanly, never to process a payment or store a submission.
-
-### 9.5 Who we are
-
-A visitor must be able to answer, without hunting: what is this organization, who runs it, where is it, and how do I reach a human.
-
-* **About** — what the Center is and does
-* **Board** — real people, built from Person records with photos and roles
-* **Visit & contact** — address, map, hours, email, socials, also present in the footer
-
-### 9.6 No dead ends, but not endless either
-
-Content pages offer a way onward: the Topics it belongs to, related content, a route back to the collection. But the *terminal* option on every page is the ask. Exploration that never converts is a brochure.
+On mobile the sidebar collapses beneath the main column. Nothing in the sidebar is separately maintained content.
 
 ---
 
@@ -251,46 +259,56 @@ Content pages offer a way onward: the Topics it belongs to, related content, a r
 | Event | Content | Yes | **Yes** — recurring + one-off, upcoming + past |
 | Announcement | Content | Yes | **Yes** — recency + pinning |
 | Post | Content | Yes | **Yes** — index by publish date |
-| Topic | Entity | Yes | **Yes** — the differentiator |
-| Person | Entity | No — byline / board listing | **Yes** — needs role + ordering |
+| Topic | Entity | Yes | **Yes** — scoped pulse |
+| Person | Entity | No — byline, board listing | **Yes** — needs role + ordering |
 | Location | Entity | No — shown on Events | Yes |
-| Resource List | Content | Yes | Surfaced on homepage and Topic pages |
+| Resource List | Content | Yes | Surfaced in sidebar and on Topic pages |
 | Resource | Component | **No** | Yes, inside Resource Lists |
-| Gallery | Content | Via Topics | **Deferred** — schema parked |
-| Newsletter | Content | Yes | **Deferred** — PDF archive, low priority |
+| Gallery | Content | Via Topics | **Future** — seam left, not built |
+| Newsletter | Content | Yes | **Future** — schema ready |
 
-### 10.1 Model requirements
+### 10.1 Requirements
 
-* **Announcements have no expiry date.** Currency is determined by recency plus an explicit pin. Expiry dates are a cleanup chore that asks a volunteer to predict the future at the moment they care least — and a wrong date is worse than none.
-* **Announcement age is displayed**, so staleness is visible and honest rather than hidden.
-* **Every type with a page has a stable, required slug**, generated automatically. Slugs are never the Editor's concern.
-* **Person needs a role and an ordering field** to render a board page.
-* **Images carry alt text** via a single reusable image type used everywhere, rather than fields repeated per document. Alt text is **optional** and AI-drafted: a required field produces garbage typed to get past it, which is worse for a screen reader than an empty one.
-* **Field naming is consistent across types** — `title`, `slug`, `topics`, `body`. The homepage and every Topic page aggregate several types at once; inconsistent names force per-type special-casing forever.
-* **Resources stay components, not documents.** A Resource is a link elsewhere; giving each its own page would create thin content that works against G7.
+* **One shared pulse projection.** Every pulse consumer — homepage, Topic pages, and later search or newsletters — reads through a single GROQ fragment mapping each type to a common card shape. Field names do not need to match; the projection coalesces them. **Its single-source-of-truth status is the requirement**, because the failure mode is a new type silently not rendering.
+* **Free renames now**, while no content exists: `eventTitle` → `title`, `eventBody` → `body`, one consistent name for the topics array. Semantically distinct fields such as `startDate` and `publishDate` keep distinct names and are coalesced.
+* **Announcements have no expiry date.** Currency comes from recency plus an explicit pin. An expiry date is a cleanup chore that asks a volunteer to predict the future at the moment they care least, and a wrong date is worse than none.
+* **Every type with a page has a stable, auto-generated slug.** Slugs are never the Editor's concern.
+* **Person needs role and ordering** for the board page.
+* **Images carry optional alt text** via one reusable image type used everywhere. Optional and AI-drafted rather than required: a required field produces text typed to get past it, which is worse for a screen reader than an empty one.
+* **Resources stay components.** A Resource is a link elsewhere; its own page would be thin content working against G8.
 
 ---
 
-## 11. Information Architecture
+## 11. Editorial Experience
+
+An Editor should be able to create content, enter the information, assign Topics as a **primary visible step**, and publish.
+
+* **URLs are not the Editor's job.** Slugs generate automatically.
+* **Metadata is derived, not authored.** Share cards and page metadata come from content already entered.
+* **Nothing sends the Editor out of the form.** Inline fields are free; references cost attention. Where a reference is necessary — venue, author — the referenced type must be creatable and manageable from the Studio, not hidden from it.
+* **Topic curation belongs to the Admin.**
+* **Preview is deferred.** Editors publish and view on the prototype URL. The site isn't public, so publishing carries no real risk — which is what makes deferral acceptable *for the prototype specifically*. Preview becomes necessary the moment it goes public (§15).
+
+---
+
+## 12. Information Architecture
+
+**Navigation:** Home · Events · Programs · News · About · **Donate**
 
 ```text
-Home
+Home  (hero · featured · community pulse · sidebar)
 │
-├── What's Happening
-│   ├── Class Schedule
-│   ├── Upcoming Events
-│   ├── Past Events
-│   └── Event Detail
+├── Events                  (one calendar surface)
+│   ├── dated rows, expandable in place
+│   ├── recurring classes on each date they run
+│   ├── past events behind a toggle
+│   └── Event Detail        (own URL, for search and sharing)
 │
 ├── News
 │   └── Post Detail
 │
-├── Topics
-│   └── Topic  (program area — self-populating)
-│       ├── Schedule & Upcoming Events
-│       ├── Posts
-│       ├── Announcements
-│       └── Resource Lists
+├── Programs                (Topics)
+│   └── Program             (scoped pulse)
 │
 ├── About
 │   ├── Board
@@ -300,43 +318,27 @@ Home
 └── Volunteer   → Google Form
 ```
 
-Announcements appear on the homepage and Topic pages and have their own detail pages, but no index of their own — an announcements list is not a page anyone seeks out.
+### 12.1 The Events surface
 
----
+One page replaces what would otherwise be four — class schedule, upcoming, past, and detail views. It behaves like a conventional calendar: dated rows, expandable in place for description and logistics. Cheaper to build, and familiar to an admin coming from WordPress, which is the right bar.
 
-## 12. Editorial Experience
+**Each event still keeps its own URL.** If details existed only inside an accordion, individual events couldn't be indexed or shared — no search landing page, no pasting a link into a group chat. The marginal cost is a thin route reusing the same data and card, and it preserves one of the few things a website does that social platforms structurally cannot.
 
-An Editor should be able to:
+If this ever needs cutting, drop the detail route for *recurring classes* only. Nobody searches for a weekly grappling class; someone might well share a ticketed workshop.
 
-1. Create content
-2. Enter the information
-3. Assign Topics — a **primary, visible step**
-4. Publish
-
-### 12.1 Principles
-
-* **URLs are not the Editor's job.** Slugs generate automatically. An Editor is never blocked by, or asked to reason about, a URL.
-* **Metadata is derived, not authored.** Share cards and page metadata come from content already entered. Override fields exist only where curation earns its keep.
-* **Nothing sends the Editor out of the form.** Inline fields are free; references cost attention. Where a reference is necessary — venue, author — the referenced type must be creatable and manageable from the Studio rather than hidden from it.
-* **Topic curation is the Admin's.** Editors select; the Admin creates.
-
-### 12.2 Preview — deferred
-
-Editors publish and view the result on the prototype URL. Because the site isn't public, publishing carries no real risk — which is what makes deferral acceptable *for the prototype specifically*. Preview becomes necessary the moment the site is public (§16).
+Announcements have detail pages and appear in the pulse and on Program pages, but no index of their own — an announcements list is not a page anyone seeks out.
 
 ---
 
 ## 13. Non-Functional Requirements
 
-**Sharing and discovery.** Clean URLs, derived metadata, and **Open Graph share cards on every content page** — promoted to a core deliverable because it's the mechanism by which §3.1 improves. Ranking outcomes are a launch concern.
+**Sharing and discovery.** Clean URLs, derived metadata, and Open Graph share cards on every content page. Cheap to build, and shared links are a real path into the hub. Ranking outcomes are a launch concern.
 
-**Performance.** Fast loads, optimized images, minimal client-side JavaScript. Directional for the prototype; no budget gates the demo.
+**Performance.** Fast loads, optimized images, minimal client-side JavaScript — with pulse filtering as the deliberate exception (§7.6). Directional for the prototype; no budget gates the demo.
 
-**Accessibility.** WCAG 2.1 AA is the **launch** target. For the prototype the standard is narrower and actually verifiable: semantic HTML, alt text, keyboard navigation, and sufficient contrast, confirmed by an automated pass on each page type. A full audit is a launch gate.
+**Accessibility.** WCAG 2.1 AA is the **launch** target. For the prototype: semantic HTML, alt text, keyboard navigation, sufficient contrast, verified by an automated pass on each page type. A full audit is a launch gate.
 
-**Maintainability.** Routine content changes never require code changes or deployments.
-
-**Visual design is adopted, not invented.** An existing design system or template, restyled. Nobody will evaluate the originality of the design system, and hours spent there are hours not spent on §8.
+**Maintainability.** See §5 — this is a constraint, and the bar is matching WordPress.
 
 ---
 
@@ -344,21 +346,21 @@ Editors publish and view the result on the prototype URL. Because the site isn't
 
 ### 14.1 In
 
-* Homepage — main column and sidebar, featured slot
-* Class schedule and events — recurring and one-off, upcoming and past, with detail pages
+* Homepage — hero, featured slot, community pulse with pills, sidebar
+* Events — one calendar surface covering classes, upcoming and past, with expandable rows and per-event URLs
 * Posts — index by publish date, with detail pages
-* Topic pages — four to six, sections hiding when empty
+* Announcements — pulse surfacing, pinning, detail pages
+* Topic pages — four to six, as scoped pulses
 * About, Board, Visit & Contact
 * Donate and volunteer, sitewide
-* Announcements — homepage surfacing, pinning, detail pages
-* Resource Lists surfaced on the homepage and Topic pages
+* Resource List in the sidebar and on Topic pages
 * Open Graph share cards, derived metadata, clean URLs
 * Responsive layout, accessibility fundamentals
-* Roughly 50 migrated posts plus current events (§15)
+* Roughly 50 migrated posts plus current events and the class schedule
 
-### 14.2 Deferred, schema ready
+### 14.2 Future, foundation ready
 
-Galleries — later attached to Topics and major events. Newsletters — a PDF archive is low priority; the eventual intent is web-native issues composed from existing posts, events, and announcements. A standalone Resources index.
+Galleries — attached to Topics and major events; the strongest instrument for §2.1 and deferred only on time, so the seam stays clean. Web-native newsletters composed from existing posts, events, and announcements. A standalone Resources index. Donation-progress module in the featured slot.
 
 ### 14.3 Out
 
@@ -366,31 +368,31 @@ Social media aggregation. Site search. Calendar view and event filtering. RSVP, 
 
 ---
 
-## 15. Migration
-
-Migration is **demo-critical**, not deferred. A prototype full of placeholder text persuades nobody.
-
-**Target: roughly 50 posts, chosen to fill Topic pages** — not the 50 most recent. Migrate the posts that make *Immigration & Support* and *Arts & Theater* look alive. Plus current events and the standing class schedule, and the organizational content needed for About and Board.
-
-**The old tags are not Topics.** The existing tag vocabulary mixes three different things — identity labels applied to nearly everything, content-type labels, and genuine subjects. Migration **translates** into the §8.3 set rather than copying. Most old tags simply evaporate.
-
-**Migration is also a test of the model.** Any real item that won't fit cleanly is a finding worth having now.
-
-URL preservation is explicitly not part of this. The current site stays live, so nothing breaks (§16).
-
----
-
-## 16. Launch Gates
+## 15. Launch Gates
 
 None block the prototype. All block a public launch.
 
-1. **URL preservation and redirects** — mapping indexed WordPress URLs to new destinations
-2. **Full WCAG 2.1 AA audit**
-3. **Editorial preview**
-4. **Content backup and export** — a documented, tested way to get everything out of Sanity
-5. **Bus-factor plan** — a named second person with access and enough documentation to keep the site running
-6. **Hosting decision confirmed and hardened**
-7. **Visit & contact content moved from hardcoded to editable**
+1. URL preservation and redirects from the current site
+2. Full WCAG 2.1 AA audit
+3. Editorial preview
+4. Content backup and export — documented and tested
+5. Bus-factor plan — a named second person with access and documentation
+6. Hosting decision confirmed and hardened
+7. Visit & contact content moved from hardcoded to editable
+
+---
+
+## 16. Migration
+
+Migration is **demo-critical**. A prototype full of placeholder text persuades nobody.
+
+**Target: roughly 50 posts, chosen to fill Topic pages** — not the 50 most recent. Migrate the posts that make *Immigration & Support* and *Arts & Theater* look alive. Plus current events, the standing class schedule, board members, and the organizational content for About.
+
+**The old tags are not Topics.** The existing vocabulary mixes three different things: identity labels applied to nearly everything, content-type labels, and genuine subjects. Migration **translates** into the §8.2 set; most old tags evaporate.
+
+Migration doubles as a test of the model — any real item that won't fit cleanly is a finding worth having now.
+
+URL preservation is not part of this. The current site stays live, so nothing breaks.
 
 ---
 
@@ -398,49 +400,52 @@ None block the prototype. All block a public launch.
 
 ### 17.1 Primary
 
-* **S1 — Go-ahead.** Staff and administrators give an explicit decision to continue past the prototype. Binary, and the only one that truly matters.
-* **S2 — Unaided publish.** The Admin creates and publishes real content during the demo, without developer help, in under five minutes.
-* **S3 — A Topic page earns itself.** The Admin sees that creating a Topic produces a page that fills and maintains itself — and recognizes it as work they no longer have to do.
+* **S1 — Go-ahead.** Staff and administrators explicitly decide to continue past the prototype. Binary, and the only one that finally matters.
+* **S2 — The pulse reads as alive.** Someone seeing the homepage for the first time recognizes the Center as an active organization. This is §2.1 resolved, and it's what the prototype is really testing.
+* **S3 — Unaided publish.** The Admin creates and publishes real content during the demo, without developer help, in under five minutes — and it appears in the pulse.
 
 ### 17.2 Secondary
 
-* **S4 — Publish-once fan-out.** One published Event reaches the events page, the homepage, its Topic pages, and a valid share card with no extra editing.
+* **S4 — Hub coherence.** A visitor can find the Center's schedule, recent activity, program areas, board, and contact details without leaving the site or guessing.
 * **S5 — Content realism.** No placeholder text on any page shown.
-* **S6 — Model fit.** Every migrated item fits without a schema change or a free-text workaround. Items that don't are recorded as findings — a useful outcome, not a failure.
+* **S6 — Foundation test.** For galleries, newsletters, and RSVP, the team can state how each would be added without changing existing content types (G3).
+* **S7 — Model fit.** Every migrated item fits without a schema change or a free-text workaround. Items that don't are findings, not failures.
 
 ### 17.3 Counter-metrics — do not optimize
 
 * **Number of finished pages.** A broad, shallow prototype is worse than a narrow, credible one.
-* **Visual polish.** Polish bought at the cost of the editorial loop working is a net loss. If the pages look excellent and the Admin can't publish, the demo failed.
+* **Visual polish.** Polish bought at the cost of the pulse or the editorial loop is a net loss.
 * **Hosting readiness.** Hardening infrastructure before a go-ahead is investment in a project that may not continue.
 
 ---
 
 ## 18. Principles
 
-**Community first.** The site communicates what is happening within the organization.
+**Show the work.** The Center is already active. The site's job is to make that visible, not to ask anyone to do more.
 
-**Publish once.** Entering content a second time is a design failure.
+**One stream beats four sections.** Segmenting activity hides volume.
 
-**Don't build what a form can do.** Zeffy handles money; Google Forms handles submissions. No payments, no personal data, no auth, no backend. This is a deliberate architectural position, not a shortcut — and it likely retires most of the "eventually we'll need a database" roadmap.
+**Design for the untended case.** This site will go unattended for stretches. The right design degrades gracefully when nobody is tending it. The pulse widens its window rather than emptying; announcements age quietly rather than expiring wrongly; Topic pages stay current without curation.
 
-**Design for the untended case.** This site will go unattended for stretches. The right design is the one that degrades most gracefully when nobody is tending it, not the one that's best when someone is. Recency-based announcements age quietly; expiry dates fail loudly. Self-populating Topic pages stay honest; hand-built program pages rot.
+**Don't build what a form can do.** Zeffy handles money; Google Forms handles submissions. No payments, no personal data, no auth, no backend — a deliberate position, not a shortcut, and one that likely retires most of the "eventually we'll need a database" roadmap.
 
-**Low maintenance has teeth.** A feature that makes publishing easier but needs a developer to revive it every few months violates this principle rather than serving it.
+**Match the incumbent where it's already good.** WordPress lets volunteers publish. That's the bar, not the target.
 
-**Structured content.** Content is modeled once and presented many ways.
+**Structured content.** Modeled once, presented many ways — the mechanism behind G3.
 
-**Cost conscious.** Near-zero operating cost is a requirement, not an aspiration.
+**Cost conscious.** Near-zero operating cost is a requirement.
 
 ---
 
 ## 19. Future Direction
 
-**Near term** — galleries attached to Topics and major events; web-native newsletters composed from existing content; a donation-progress module in the featured slot, with the figure entered by the Admin; site search; calendar view.
+**Near term** — galleries attached to Topics and major events; web-native newsletters composed from existing content; a donation-progress module in the featured slot with the figure entered by the Admin; site search; calendar view.
 
-**Later** — RSVP via forms; richer related-content; per-program contact routing.
+**Later** — RSVP via forms; per-program contact routing; richer related content.
 
-**Deliberately undecided: social media aggregation.** Pulling content from the Center's social platforms is an appealing answer to §3.1, and it is not a plan. The likely sources share one app-review process and one credential-expiry failure mode, meaning the site could silently go stale in a way no volunteer can fix — which violates *design for the untended case*. Meanwhile §9.1 attacks the same problem from the opposite direction at a fraction of the cost. If it's ever pursued, the maintenance burden gets costed honestly first.
+**Reducing duplicated publishing effort** — the Center maintains events on both Facebook and the website today. Worth solving, not now. Two directions exist: making shared links attractive enough that the website becomes the source and Facebook the pointer, or aggregating from social platforms into the site.
+
+**Deliberately undecided: aggregation.** The likely sources share one app-review process and one credential-expiry failure mode, meaning the site could silently go stale in a way no volunteer can fix — which violates *design for the untended case*. If pursued, the maintenance burden gets costed honestly first.
 
 ---
 
@@ -448,9 +453,9 @@ None block the prototype. All block a public launch.
 
 * Staff and administrators have authority to approve continuing past the prototype.
 * A live demo is the evaluation format.
-* The Admin is willing to publish live in front of the room. If not, S2 needs a different demonstration.
+* The Admin is willing to publish live in front of the room. If not, S3 needs a different demonstration.
 * Roughly 6–8 weeks of part-time solo development is available.
 * Board members' names and photographs are publishable.
 * The existing WordPress content is accessible for manual migration.
 * The standing class schedule is stable enough that recurring entries rarely need per-occurrence edits.
-* The editorial team stays at roughly three people. Enforced permissions become worth building if it grows.
+* The editorial team stays at roughly three people.
